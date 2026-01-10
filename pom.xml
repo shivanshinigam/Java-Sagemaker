@@ -1,0 +1,393 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>portal</groupId>
+	<artifactId>portal</artifactId>
+	<version>portal</version>
+	<packaging>war</packaging>
+
+	<name>portal</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<!-- AWS SDK BOM -->
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>bom</artifactId>
+            <version>2.25.60</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.8</version>
+		</dependency>
+		
+		
+		
+		
+		<!-- GEmini thingy -->
+		<!-- Force modern Guava for Gemini -->
+<dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>33.4.0-jre</version>
+</dependency>
+<!-- Google Gemini (Gen AI) Java SDK -->
+<dependency>
+    <groupId>com.google.genai</groupId>
+    <artifactId>google-genai</artifactId>
+    <version>1.32.0</version>
+    <exclusions>
+        <exclusion>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-spring</artifactId>
+			<version>1.8</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+		<!-- Spring 3 dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
+
+		 <!--<dependency>
+<groupId>org.apache.spark</groupId>
+<artifactId>spark-core_2.13</artifactId>
+<version>3.5.1</version>
+</dependency> -->
+
+
+		<!--
+		https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-lambda -->
+		<!--
+		https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-lambda -->
+		<!--
+		https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-lambda -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-lambda-java-core</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+
+
+		<!--  https://mvnrepository.com/artifact/org.apache.spark/spark-sql  -->
+
+
+	<!--	<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-sql_2.13</artifactId>
+			<version>3.5.1</version>
+			<scope>provided</scope>
+		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql -->
+		<!-- <dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-sql_2.13</artifactId>
+    <version>4.0.0-preview2</version>
+    
+</dependency> -->
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
+		<dependency>
+			<groupId>org.apache.tika</groupId>
+			<artifactId>tika-core</artifactId>
+			<version>1.26</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.python/jython-standalone -->
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.189</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.44</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/asm/asm -->
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.ow2.util/util-base64 -->
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- maven dependency for url rewrite , used for www redirection in our
+		code -->
+		<dependency>
+			<groupId>org.tuckey</groupId>
+			<artifactId>urlrewritefilter</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+
+		<!-- Not needed to go to prod -->
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http44</artifactId>
+			<version>1.18.0</version>
+		</dependency>
+
+		<!-- Not needed to go to prod -->
+		<dependency>
+			<groupId>opensymphony</groupId>
+			<artifactId>quartz</artifactId>
+			<version>1.6.3</version>
+		</dependency>
+
+		<!-- Not needed to go to prod -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
+		<!-- <dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-java-sdk-s3</artifactId>
+    <version>1.12.780</version>
+</dependency> -->
+
+
+		<!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-java-sdk-s3</artifactId>
+    <version>1.11.1030</version>
+    <exclusions>
+        <exclusion>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+
+
+
+<!-- https://mvnrepository.com/artifact/org.codehaus.httpcache4j.resolvers/resolvers-net-urlconnection -->
+<dependency>
+    <groupId>org.codehaus.httpcache4j.resolvers</groupId>
+    <artifactId>resolvers-net-urlconnection</artifactId>
+    <version>4.0-M4</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20250107</version>
+</dependency>
+
+<!-- AWS SDK HTTP CLIENT (REQUIRED) -->
+<dependency>
+    <groupId>software.amazon.awssdk</groupId>
+    <artifactId>apache-client</artifactId>
+</dependency>
+
+<dependency>
+    <groupId>software.amazon.awssdk</groupId>
+    <artifactId>apache-client</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.5.14</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.4.16</version>
+</dependency>
+<dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-java-sdk-logs</artifactId>
+    <version>1.12.700</version>
+</dependency>
+
+
+
+    <!-- AWS S3 -->
+    <dependency>
+    <groupId>software.amazon.awssdk</groupId>
+    <artifactId>s3</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+
+    <!-- AWS SageMaker -->
+    <dependency>
+    <groupId>software.amazon.awssdk</groupId>
+    <artifactId>sagemaker</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+
+    <!-- AWS Regions -->
+    <dependency>
+    <groupId>software.amazon.awssdk</groupId>
+    <artifactId>regions</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+
+</dependencies>
+
+
+
+		<!-- <dependency>
+    <groupId>org.python</groupId>
+    <artifactId>jython-standalone</artifactId>
+    <version>2.5.2</version>
+</dependency> -->
+
+		<!-- <dependency>
+    <groupId>io.github.hakky54</groupId>
+    <artifactId>consolecaptor</artifactId>
+    <version>1.0.0</version>
+    <scope>test</scope>
+</dependency> -->
+
+		<!-- <dependency>
+  <groupId>com.paytm.pg</groupId>
+  <artifactId>checksum</artifactId>
+  <version>2.0.0</version>
+</dependency> -->
+
+
+		<!--
+		https://mvnrepository.com/artifact/com.thetransactioncompany/cors-filter -->
+		<!-- <dependency>
+				    <groupId>com.thetransactioncompany</groupId>
+				    <artifactId>cors-filter</artifactId>
+				    <version>2.1.1</version>
+				</dependency>
+                 -->
+
+</project>
